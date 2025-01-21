@@ -4,9 +4,10 @@
       Tasks for {{user.name}}
     </h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onStartAddingTask()">{{addTaskButtonText}}</button>
     </menu>
   </header>
+  <app-new-task *ngIf="isAddingTask" (cancelDialog)="onCancelAddingTask()" (doneDialog)="onAddTask($event)"/>
   <ul *ngIf="uncompleted; else no_tasks_to_do">
     <li *ngFor="let task of uncompleted!">
       <app-task [task]="task" (complete)="onTaskCompleted($event)"/>
