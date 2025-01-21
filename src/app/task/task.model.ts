@@ -4,4 +4,5 @@ export interface TaskModel {
   title: string;
   summary: string;
   dueDate: string;
+  completedTimestamp?: DOMHighResTimeStamp;
 }

@@ -23,4 +23,8 @@ export class TasksComponent {
   get tasks (): TaskModel[] | undefined {
     return DUMMY_TASKS.filter(task => task.userId === this.user.id);
   }
+
+  onTaskCompleted(task: TaskModel) {
+
+  }
 }

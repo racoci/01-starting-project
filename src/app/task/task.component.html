@@ -2,7 +2,12 @@
   <h2>{{ task.title }}</h2>
   <time> {{task.dueDate}} </time>
   <p>{{task.summary}}</p>
-  <p class="actions" >
-    <button>Complete</button>
+  <p *ngIf="task.completedTimestamp; else task_to_do">
+    Completed at {{task.completedTimestamp!}}
   </p>
+  <ng-template #task_to_do >
+    <p class="actions" >
+      <button (click)="onComplete($event)">Complete</button>
+    </p>
+  </ng-template>
 </article>
