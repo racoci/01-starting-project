@@ -1,1 +1,19 @@
-Tasks for {{user.name}}
+<section id="tasks">
+  <header>
+    <h2>
+      Tasks for {{user.name}}
+    </h2>
+    <menu>
+      <button>Add Task</button>
+    </menu>
+  </header>
+  <ul *ngIf="tasks; else no_tasks">
+    <li *ngFor="let task of tasks!">
+      <app-task [task]="task"/>
+    </li>
+  </ul>
+  <ng-template #no_tasks >
+    No tasks
+  </ng-template>
+</section>
+
