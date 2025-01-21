@@ -1,4 +1,4 @@
-export interface AppTask  {
+export interface TaskModel {
   id: string;
   userId: string;
   title: string;
