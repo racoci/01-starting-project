@@ -20,8 +20,14 @@ import {DUMMY_TASKS} from "../dummy-data";
 export class TasksComponent {
   @Input({required: true}) user !: UserModel;
 
-  get tasks (): TaskModel[] | undefined {
-    return DUMMY_TASKS.filter(task => task.userId === this.user.id);
+  tasks: TaskModel[] = DUMMY_TASKS;
+
+  get uncompleted (): TaskModel[] {
+    return this.tasks.filter(task => task.userId === this.user.id && !task.completedTimestamp);
+  }
+
+  get completed (): TaskModel[] {
+    return this.tasks.filter(task => task.userId === this.user.id && !!task.completedTimestamp);
   }
 
   onTaskCompleted(task: TaskModel) {
