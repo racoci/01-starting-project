@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
-import { UserComponent } from "./user/user.component";
-import { DUMMY_USERS } from './dummy-users';
-import { TasksComponent } from './tasks/tasks.component';
-import { NgFor, NgIf } from "@angular/common"
+import {Component} from '@angular/core';
+import {HeaderComponent} from './header/header.component';
+import {UserComponent} from "./user/user.component";
+import {DUMMY_USERS} from './dummy-users';
+import {TasksComponent} from './tasks/tasks.component';
+import {NgFor, NgIf} from "@angular/common"
+import {AppUser} from "./user/AppUser";
 
 
 @Component({
@@ -14,10 +15,12 @@ import { NgFor, NgIf } from "@angular/common"
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  users = DUMMY_USERS;
-  selectedUser: {id: string, name: string; avatar: string} | undefined = undefined;
-  
-  onSelectUser(userId: string) {
-    this.selectedUser = this.users.find( (user) => user.id === userId)
+  users: AppUser[] = DUMMY_USERS;
+  selectedUser: AppUser | undefined = undefined;
+
+  onSelectUser(selectedUser: AppUser) {
+    this.selectedUser = this.users.find((user) =>
+      user.id === selectedUser.id
+    )
   }
 }
