@@ -13,5 +13,9 @@ import { DUMMY_USERS } from './dummy-users';
 })
 export class AppComponent {
   users = DUMMY_USERS;
+  selectedUser = "No User Selected Yet"
   
+  onSelectUser(userId: string) {
+    this.selectedUser = userId
+  }
 }
