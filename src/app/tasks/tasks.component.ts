@@ -1,22 +1,13 @@
 import {Component, inject, Input} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
 import {UserModel} from "../user/user.model";
-import {NewTaskComponent} from "./new-task/new-task.component";
 import {NewTaskData} from "./new-task/new-task.model";
 import {TasksService} from "./tasks.service";
-import {TaskComponent} from "./task/task.component";
 import {TaskModel} from "./task/task.model";
 
 
 @Component({
-  imports: [
-    NgForOf,
-    TaskComponent,
-    NgIf,
-    NewTaskComponent
-  ],
   selector: 'app-tasks',
-  standalone: true,
+  standalone: false,
   styleUrl: './tasks.component.css',
   templateUrl: './tasks.component.html'
 })
