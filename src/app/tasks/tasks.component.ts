@@ -1,11 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {TaskComponent} from "../task/task.component";
 import {UserModel} from "../user/user.model";
 import {TaskModel} from "../task/task.model";
-import {DUMMY_TASKS} from "../dummy-data";
 import {NewTaskComponent} from "./new-task/new-task.component";
 import {NewTaskData} from "./new-task/new-task.model";
+import {TasksService} from "./tasks.service";
 
 @Component({
   selector: 'app-tasks',
@@ -23,16 +23,16 @@ import {NewTaskData} from "./new-task/new-task.model";
 export class TasksComponent {
   @Input({required: true}) user !: UserModel;
 
-  tasks: TaskModel[] = DUMMY_TASKS;
+  private tasksService = inject(TasksService)
   isAddingTask = false;
   addTaskButtonText = "Add Task";
 
   get uncompleted (): TaskModel[] {
-    return this.tasks.filter(task => task.userId === this.user.id && !task.completedTimestamp);
+    return this.tasksService.getTasksToDoByUserId(this.user.id);
   }
 
   get completed (): TaskModel[] {
-    return this.tasks.filter(task => task.userId === this.user.id && !!task.completedTimestamp);
+    return this.tasksService.getCompletedByUserid(this.user.id);
   }
 
   onTaskCompleted(task: TaskModel) {
@@ -50,10 +50,6 @@ export class TasksComponent {
 
   onAddTask(newTask: NewTaskData) {
     this.isAddingTask = false
-    this.tasks.unshift({
-      id: new Date().getTime().toString(),
-      userId: this.user.id,
-      ...newTask
-    })
+    this.tasksService.insertNewTask(newTask, this.user.id)
   }
 }
