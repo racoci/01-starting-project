@@ -32,7 +32,6 @@ export class TasksComponent {
   }
 
   onStartAddingTask() {
-    this.addTaskButtonText += " Clicked"
     this.isAddingTask = true
   }
 
