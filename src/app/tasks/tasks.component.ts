@@ -1,23 +1,24 @@
 import {Component, inject, Input} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
-import {TaskComponent} from "../task/task.component";
 import {UserModel} from "../user/user.model";
-import {TaskModel} from "../task/task.model";
 import {NewTaskComponent} from "./new-task/new-task.component";
 import {NewTaskData} from "./new-task/new-task.model";
 import {TasksService} from "./tasks.service";
+import {TaskComponent} from "./task/task.component";
+import {TaskModel} from "./task/task.model";
+
 
 @Component({
-  selector: 'app-tasks',
-  standalone: true,
   imports: [
     NgForOf,
     TaskComponent,
     NgIf,
     NewTaskComponent
   ],
-  templateUrl: './tasks.component.html',
-  styleUrl: './tasks.component.css'
+  selector: 'app-tasks',
+  standalone: true,
+  styleUrl: './tasks.component.css',
+  templateUrl: './tasks.component.html'
 })
 
 export class TasksComponent {

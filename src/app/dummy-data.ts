@@ -1,5 +1,5 @@
 import {UserModel} from "./user/user.model";
-import {TaskModel} from "./task/task.model";
+import {TaskModel} from "./tasks/task/task.model";
 
 export const DUMMY_TASKS: TaskModel[] = [
   {

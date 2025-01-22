@@ -1,4 +1,4 @@
-import {TaskModel} from "../task/task.model";
+import {TaskModel} from "../tasks/task/task.model";
 import {DUMMY_TASKS} from "../dummy-data";
 import {NewTaskData} from "./new-task/new-task.model";
 import {Injectable} from "@angular/core";
