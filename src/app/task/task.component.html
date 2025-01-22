@@ -1,13 +1,15 @@
-<article>
-  <h2>{{ task.title }}</h2>
-  <time> {{task.dueDate}} </time>
-  <p>{{task.summary}}</p>
-  <p *ngIf="task.completedTimestamp; else task_to_do">
-    Completed at {{task.completedTimestamp!}}
-  </p>
-  <ng-template #task_to_do >
-    <p class="actions" >
-      <button (click)="onComplete($event)">Complete</button>
+<app-card>
+  <article>
+    <h2>{{ task.title }}</h2>
+    <time> {{task.dueDate | date:'fullDate'}} </time>
+    <p>{{task.summary}}</p>
+    <p *ngIf="task.completedTimestamp; else task_to_do">
+      Completed at {{task.completedTimestamp!}}
     </p>
-  </ng-template>
-</article>
+    <ng-template #task_to_do >
+      <p class="actions" >
+        <button (click)="onComplete($event)">Complete</button>
+      </p>
+    </ng-template>
+  </article>
+</app-card>

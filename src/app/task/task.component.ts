@@ -1,12 +1,15 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TaskModel} from "./task.model";
-import {NgIf} from "@angular/common";
+import {DatePipe, NgIf} from "@angular/common";
+import {CardComponent} from "../shared/card/card.component";
 
 @Component({
   selector: 'app-task',
   standalone: true,
   imports: [
-    NgIf
+    NgIf,
+    CardComponent,
+    DatePipe
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
